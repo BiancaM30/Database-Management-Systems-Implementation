@@ -1,0 +1,301 @@
+{
+    "databases": {
+        "students": {
+            "name": "students",
+            "tables": {
+                "students": {
+                    "tableName": "students",
+                    "fileName": "students.bin",
+                    "rowLength": 5,
+                    "structure": [
+                        {
+                            "attributeName": "StudID",
+                            "type": "int",
+                            "length": "1"
+                        },
+                        {
+                            "attributeName": "GroupID",
+                            "type": "int",
+                            "length": "1"
+                        },
+                        {
+                            "attributeName": "Name",
+                            "type": "varchar",
+                            "length": "50"
+                        },
+                        {
+                            "attributeName": "Tel",
+                            "type": "varchar",
+                            "length": "50"
+                        },
+                        {
+                            "attributeName": "mark",
+                            "type": "int",
+                            "length": "1"
+                        }
+                    ],
+                    "primaryKey": [
+                        {
+                            "attributeName": "StudID"
+                        }
+                    ],
+                    "foreignKeys": [],
+                    "uniqueKeys": [],
+                    "indexFiles": [
+                        {
+                            "indexName": "idx_students_groupIdIndex.ind",
+                            "keyLength": 20,
+                            "isUnique": "1",
+                            "indexType": "BTree",
+                            "indexAttributes": [
+                                {
+                                    "attributeName": "GroupID"
+                                }
+                            ]
+                        },
+                        {
+                            "indexName": "idx_students_markIndex.ind",
+                            "keyLength": 17,
+                            "isUnique": "1",
+                            "indexType": "BTree",
+                            "indexAttributes": [
+                                {
+                                    "attributeName": "mark"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "students2": {
+                    "tableName": "students2",
+                    "fileName": "students2.bin",
+                    "rowLength": 5,
+                    "structure": [
+                        {
+                            "attributeName": "StudID",
+                            "type": "int",
+                            "length": "1"
+                        },
+                        {
+                            "attributeName": "GroupID",
+                            "type": "int",
+                            "length": "1"
+                        },
+                        {
+                            "attributeName": "Name",
+                            "type": "varchar",
+                            "length": "50"
+                        },
+                        {
+                            "attributeName": "Tel",
+                            "type": "varchar",
+                            "length": "50"
+                        },
+                        {
+                            "attributeName": "mark",
+                            "type": "int",
+                            "length": "1"
+                        }
+                    ],
+                    "primaryKey": [
+                        {
+                            "attributeName": "StudID"
+                        }
+                    ],
+                    "foreignKeys": [],
+                    "uniqueKeys": [],
+                    "indexFiles": [
+                        {
+                            "indexName": "idx_students2_groupId_markIndex.ind",
+                            "keyLength": 26,
+                            "isUnique": "1",
+                            "indexType": "BTree",
+                            "indexAttributes": [
+                                {
+                                    "attributeName": "GroupID"
+                                },
+                                {
+                                    "attributeName": "mark"
+                                }
+                            ]
+                        }
+                    ]
+                },
+                "students3": {
+                    "tableName": "students3",
+                    "fileName": "students3.bin",
+                    "rowLength": 5,
+                    "structure": [
+                        {
+                            "attributeName": "StudID",
+                            "type": "int",
+                            "length": "1"
+                        },
+                        {
+                            "attributeName": "GroupID",
+                            "type": "int",
+                            "length": "1"
+                        },
+                        {
+                            "attributeName": "Name",
+                            "type": "varchar",
+                            "length": "50"
+                        },
+                        {
+                            "attributeName": "Tel",
+                            "type": "varchar",
+                            "length": "50"
+                        },
+                        {
+                            "attributeName": "mark",
+                            "type": "int",
+                            "length": "1"
+                        }
+                    ],
+                    "primaryKey": [
+                        {
+                            "attributeName": "StudID"
+                        }
+                    ],
+                    "foreignKeys": [],
+                    "uniqueKeys": [],
+                    "indexFiles": [
+                        {
+                            "indexName": "idx_students3_groupId_markIndex",
+                            "keyLength": 26,
+                            "isUnique": "1",
+                            "indexType": "BTree",
+                            "indexAttributes": [
+                                {
+                                    "attributeName": "GroupID"
+                                },
+                                {
+                                    "attributeName": "mark"
+                                }
+                            ]
+                        }
+                    ]
+                }
+            }
+        },
+        "students2": {
+            "name": "students2",
+            "tables": {
+                "specialization": {
+                    "tableName": "specialization",
+                    "fileName": "specialization.bin",
+                    "rowLength": 3,
+                    "structure": [
+                        {
+                            "attributeName": "SpecID",
+                            "type": "varchar",
+                            "length": "5"
+                        },
+                        {
+                            "attributeName": "SpecName",
+                            "type": "varchar",
+                            "length": "40"
+                        },
+                        {
+                            "attributeName": "Language",
+                            "type": "varchar",
+                            "length": "20"
+                        }
+                    ],
+                    "primaryKey": [
+                        {
+                            "attributeName": "SpecID"
+                        }
+                    ],
+                    "foreignKeys": [],
+                    "uniqueKeys": [],
+                    "indexFiles": []
+                },
+                "groups": {
+                    "tableName": "groups",
+                    "fileName": "groups.bin",
+                    "rowLength": 2,
+                    "structure": [
+                        {
+                            "attributeName": "GroupId",
+                            "type": "int",
+                            "length": "1"
+                        },
+                        {
+                            "attributeName": "SpecID",
+                            "type": "varchar",
+                            "length": "5"
+                        }
+                    ],
+                    "primaryKey": [
+                        {
+                            "attributeName": "GroupId"
+                        }
+                    ],
+                    "foreignKeys": [
+                        {
+                            "foreignKey": "SpecID",
+                            "refTable": "specialization",
+                            "refAttribute": "SpecID"
+                        }
+                    ],
+                    "uniqueKeys": [],
+                    "indexFiles": [
+                        {
+                            "indexName": "groups_foreignKeySpecID.ind",
+                            "keyLength": 6,
+                            "isUnique": true,
+                            "indexType": "BTree",
+                            "indexAttributes": {
+                                "attributeName": "SpecID"
+                            }
+                        }
+                    ]
+                },
+                "students": {
+                    "tableName": "students",
+                    "fileName": "students.bin",
+                    "rowLength": 4,
+                    "structure": [
+                        {
+                            "attributeName": "GroupId",
+                            "type": "int",
+                            "length": "1"
+                        },
+                        {
+                            "attributeName": "Tel",
+                            "type": "varchar",
+                            "length": "20"
+                        },
+                        {
+                            "attributeName": "mark",
+                            "type": "int",
+                            "length": "1"
+                        },
+                        {
+                            "attributeName": "StudId",
+                            "type": "int",
+                            "length": "1"
+                        }
+
+                    ],
+                    "primaryKey": [
+                        {
+                            "attributeName": "StudId"
+                        }
+                    ],
+                    "foreignKeys": [
+                        {
+                            "foreignKey": "GroupId",
+                            "refTable": "groups",
+                            "refAttribute": "GroupId"
+                        }
+                    ],
+                    "uniqueKeys": [],
+                    "indexFiles": [
+                    ]
+                }
+            }
+        }
+    }
+}

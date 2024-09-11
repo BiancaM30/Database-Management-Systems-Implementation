@@ -1,0 +1,155 @@
+CREATE DATABASE students
+
+USE students
+
+CREATE TABLE disciplines (DiscID varchar(20) PRIMARY KEY, DName varchar(20) UNIQUE, DProf varchar(20) UNIQUE, CreditNr int);
+
+CREATE INDEX idx_disciplines ON disciplines (DName, CreditNr);
+
+insert into disciplines (DiscID,DName,DProf,CreditNr) values ('Databases','Maria','Pop',6);
+
+insert into disciplines (DiscID,DName,DProf,CreditNr) values ('Databases1','Ana','Pop',7);
+
+insert into disciplines (DiscID,DName,DProf,CreditNr) values ('Databases2','Tudor','Nita',6);
+
+insert into disciplines (DiscID,DName,DProf,CreditNr) values ('Databases3','Bianca','Munteanu',6);
+
+
+
+
+
+insert into disciplines (DiscID,DName,DProf,CreditNr) values ('AI','Maria','Stan',5);    	!!! SHOULD NOT WORK
+
+
+CREATE TABLE specialization (SpecID varchar(5) PRIMARY KEY, SpecName varchar(40), Language varchar(20));
+
+insert into specialization (SpecID,SpecName,Language) values ('I','Informatics','English');
+
+
+CREATE TABLE groups (GroupId int PRIMARY KEY, SpecID varchar(20) REFERENCES specialization (SpecID));
+
+insert into groups (GroupId,SpecID) values (451,'I');
+
+insert into groups (GroupId,SpecID) values (531,'I');
+
+insert into groups (GroupId,SpecID) values (678,'I');
+
+insert into groups (GroupId,SpecID) values (931,'I');
+
+delete from groups where GroupId=531
+
+delete from groups where GroupId=678
+
+
+CREATE TABLE students (StudID int PRIMARY KEY, GroupId int REFERENCES groups (GroupId), StudName varchar(20), Email varchar(20));
+
+insert into students (StudID,GroupId,StudName,Email) values (1,451,'John Foreman','JohnForeman@email.co');
+
+DROP TABLE groups
+
+
+
+
+
+SELECT * FROM groups 
+
+SELECT * FROM disciplines
+
+SELECT * FROM groups WHERE SpecID=I
+
+SELECT * FROM disciplines WHERE DName=Maria and DProf=Pop
+
+
+SELECT * FROM disciplines WHERE DName=Maria and DProf=Stan
+
+
+SELECT * FROM disciplines WHERE DName=Maria and CreditNr=6
+
+
+SELECT * FROM disciplines WHERE DName=Maria and CreditNr=6
+
+SELECT distinct CreditNr FROM disciplines WHERE CreditNr=6
+
+
+SELECT DiscID,DName FROM disciplines WHERE DName=Maria and DProf=Pop
+
+SELECT DiscID,DName FROM disciplines WHERE DName=Maria and DProf=Stan
+
+SELECT * FROM disciplines WHERE DName=Maria and DProf=Stan
+
+
+SELECT DiscID,DName FROM disciplines
+
+SELECT CreditNr FROM disciplines WHERE CreditNr=6
+
+
+
+SELECT distinct CreditNr FROM disciplines WHERE CreditNr=6
+
+
+SELECT distinct CreditNr FROM disciplines WHERE CreditNr=6
+
+SELECT CreditNr FROM disciplines WHERE CreditNr=6
+
+
+
+
+
+ISGBD - info lab 4
+Pentru SELECT:, doar cu AND()
+
+nu avem indecsi => table scan
+un fieldd are index si celalat nu => folositm indexul pt primul si pe al doilea il stocam in memorie
+daca ambele fielduri au indecsi separati => interesctie intre cele 2 liste
+daca avem cheie compusa, adica si un index compus, putem sa ne folosim doar de primul field
+
+Pentru Proiectie:
+- daca avem DISTINCT, trebuie sa sortam rezultatul si sa luam doar valorile distincte prin parcurgere
+sau prin HaskMap (pot aparea probleme de memorie)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+Pentru laburile viitoare, puncte bonus = > 2 way Merge Sort(ca sa nu citim cata 10000000 de recorduri in memorie)
+putem sa il folosim si la merge sort join
+

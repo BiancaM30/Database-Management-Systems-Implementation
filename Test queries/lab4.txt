@@ -1,0 +1,142 @@
+CREATE DATABASE students
+
+USE students
+
+
+CREATE TABLE students (StudID int PRIMARY KEY, GroupID int, Name varchar(50), Tel varchar(50), mark int);
+
+CREATE TABLE students2 (StudID int PRIMARY KEY, GroupID int, Name varchar(50), Tel varchar(50), mark int);
+
+
+CREATE INDEX idx_students_groupId ON students (GroupID);
+
+CREATE INDEX idx_students_mark ON students (mark);
+
+CREATE INDEX idx_students2_groupId_mark ON students2 (GroupID, mark);
+
+generate 100
+
+generate 100
+
+
+
+
+
+
+
+
+
+
+
+a)
+
+SELECT * FROM students WHERE GroupID=243 and mark=9
+
+SELECT StudID,mark FROM students WHERE GroupID=243 and mark=9
+
+
+
+b)
+
+SELECT * FROM students WHERE GroupID=243 and NameLIKEStudent1*
+
+
+
+c)
+
+SELECT StudID,mark FROM students WHERE mark<5
+
+SELECT distinct mark FROM students WHERE mark<5
+
+
+d)
+
+SELECT * FROM students2 WHERE GroupID=243 and Name=Student8
+
+SELECT * FROM students2 WHERE GroupID=243 and mark=8
+
+
+SELECT Name FROM students2 WHERE GroupID=243
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+CREATE TABLE students3 (StudID int PRIMARY KEY, GroupID int, Name varchar(50), Tel varchar(50), mark int);
+
+CREATE INDEX idx_students3_groupId_mark ON students3 (GroupID, mark);
+
+
+generate 1000000
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+insert into students (StudID, GroupID, Name, Tel, mark) values (1,451,'Ana','tel1',9);
+insert into students (StudID, GroupID, Name, Tel, mark) values (2,531,'Mihai','tel2',7);
+insert into students (StudID, GroupID, Name, Tel, mark) values (3,451,'Andra','tel3',9);
+insert into students (StudID, GroupID, Name, Tel, mark) values (6,451,'Ion','tel4',8);
+
+
+SELECT * FROM students WHERE GroupID=451 and mark>6
+
+SELECT StudID,mark FROM students WHERE GroupID=451 and mark>6
+
+SELECT distinct mark FROM students WHERE mark>6
+
+SELECT * FROM students WHERE mark=8 and GroupID>451
+
+
+
+
+
+
+
+
+SELECT * FROM students WHERE GroupID=451
+
+
+SELECT * FROM students WHERE GroupID=451 and mark>8
+
+SELECT * FROM students WHERE mark>7 and mark<10
+
+
+
+
+CREATE INDEX idx_students_mark ON students (Mark);
+
+
+SELECT * FROM students WHERE mark>6
+
+SELECT * FROM students WHERE mark>8
+
+SELECT * FROM students WHERE NameLIKEAn*
+

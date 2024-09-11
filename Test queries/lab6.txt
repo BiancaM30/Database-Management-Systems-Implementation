@@ -1,0 +1,18 @@
+SELECT GroupId, COUNT(GroupId) FROM students GROUP BY GroupId
+
+SELECT GroupId, COUNT(mark) FROM students GROUP BY mark
+
+SELECT GroupId, COUNT(Tel) FROM students GROUP BY Tel
+
+
+SELECT GroupId, MIN(mark) FROM students GROUP BY GroupId
+
+SELECT GroupId, MAX(mark) FROM students GROUP BY GroupId
+
+SELECT GroupId, AVG(mark) FROM students GROUP BY GroupId
+
+SELECT GroupId, SUM(mark) FROM students GROUP BY GroupId
+
+
+
+SELECT GroupId, AVG(mark) FROM students GROUP BY GroupId HAVING GroupId > 451

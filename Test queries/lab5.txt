@@ -1,0 +1,78 @@
+CREATE DATABASE students2
+
+USE students2
+
+CREATE TABLE specialization (SpecID varchar(5) PRIMARY KEY, SpecName varchar(40), Language varchar(20));
+
+insert into specialization (SpecID,SpecName,Language) values ('I','Informatics','English');
+
+insert into specialization (SpecID,SpecName,Language) values ('M','Mathematics','English');
+
+insert into specialization (SpecID,SpecName,Language) values ('K','K','Chinese');
+
+
+CREATE TABLE groups (GroupId int PRIMARY KEY, SpecID varchar(5) REFERENCES specialization (SpecID));
+
+insert into groups (GroupId,SpecID) values (451,'I');
+
+insert into groups (GroupId,SpecID) values (531,'I');
+
+insert into groups (GroupId,SpecID) values (678,'M');
+
+insert into groups (GroupId,SpecID) values (931,'M');
+
+insert into groups (GroupId,SpecID) values (131,'I');
+
+
+
+CREATE TABLE students (StudID int PRIMARY KEY, Tel varchar(20), mark int, GroupId int REFERENCES groups (GroupId));
+
+insert into students (StudID, GroupId, Tel, mark) values (1,451,'tel1',9);
+
+insert into students (StudID, GroupId, Tel, mark) values (2,531,'tel2',7);
+
+insert into students (StudID, GroupId, Tel, mark) values (3,451,'tel3',9);
+
+insert into students (StudID, GroupId, Tel, mark) values (6,931,'tel4',8);
+
+insert into students (StudID, GroupId, Tel, mark) values (7,131,'tel7',5);
+
+
+insert into students (StudId, GroupId, Tel, mark) values (8,451,'tel8',3);
+
+insert into students (StudId, GroupId, Tel, mark) values (9,531,'tel9',5);
+
+insert into students (StudId, GroupId, Tel, mark) values (10,931,'tel10',10);
+
+insert into students (StudId, GroupId, Tel, mark) values (11,131,'tel11',7);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+SELECT * FROM students INNER JOIN groups ON students.GroupId = groups.GroupId INNER JOIN specialization ON groups.SpecID = specialization.SpecID;
+
+
+SELECT students.StudID,groups.GroupId,specialization.SpecName FROM students INNER JOIN groups ON students.GroupId = groups.GroupId INNER JOIN specialization ON groups.SpecID = specialization.SpecID;
+
+
+
+Hash Join
+
+SELECT * FROM groups INNER JOIN specialization ON groups.SpecID = specialization.SpecID INNER JOIN students ON groups.GroupId = students.GroupId;
+
+SELECT students.StudID,groups.GroupId,specialization.SpecName FROM groups INNER JOIN specialization ON groups.SpecID = specialization.SpecID INNER JOIN students ON groups.GroupId = students.GroupId;
